@@ -1,0 +1,4 @@
+location_id,state,date,scenario,ph,e_coli,rainfall_mm,historical_cases,source_consistency,sensor_reliability,turbidity_ntu,synthetic_fixture
+SYNTH_LOW,Assam,2026-10-31,low,7.1,0,18,1,0.95,0.94,0.8,true
+SYNTH_MEDIUM,Meghalaya,2026-10-31,medium,6.2,120,86,14,0.68,0.71,5.6,true
+SYNTH_HIGH,Tripura,2026-10-31,high,5.4,900,212,76,0.31,0.36,18.2,true

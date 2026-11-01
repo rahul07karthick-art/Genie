@@ -1,0 +1,40 @@
+{
+  "model_name": "NeerWatch synthetic logistic demo",
+  "model_version": "0.1.0",
+  "model_type": "logistic_regression",
+  "training_data": "Deterministically generated synthetic scenarios; labels come from a simulated risk formula, not real water-health outcomes.",
+  "feature_keys": [
+    "ph_stress",
+    "e_coli",
+    "rainfall_mm",
+    "historical_cases",
+    "turbidity_ntu"
+  ],
+  "means": {
+    "ph_stress": 0.3265289566748203,
+    "e_coli": 0.5028635569103063,
+    "rainfall_mm": 0.49888410029746594,
+    "historical_cases": 0.5011156123057008,
+    "turbidity_ntu": 0.4987661194335669
+  },
+  "scales": {
+    "ph_stress": 0.19264719696628968,
+    "e_coli": 0.2905073440663961,
+    "rainfall_mm": 0.289020897941223,
+    "historical_cases": 0.2883540601465919,
+    "turbidity_ntu": 0.28843763434931174
+  },
+  "weights": {
+    "ph_stress": 0.1672429535506964,
+    "e_coli": 0.5746540059524189,
+    "rainfall_mm": 0.4653092823069099,
+    "historical_cases": 0.6131713365547778,
+    "turbidity_ntu": 0.5151706855461882
+  },
+  "intercept": -0.8600783470189471,
+  "training_examples": 8000,
+  "synthetic_holdout_examples": 2000,
+  "synthetic_holdout_accuracy": 0.7235,
+  "generator_seed": 20261031,
+  "warning": "Demonstration model only. Not trained or validated for real-world water-safety decisions."
+}

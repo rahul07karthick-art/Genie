@@ -1,0 +1,7 @@
+.git
+.venv
+node_modules
+NeerWatch-master
+*.zip
+*.mp4
+*.pptx

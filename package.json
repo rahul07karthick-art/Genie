@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node backend/server.mjs",
     "dev": "node backend/server.mjs",
-    "test": "node --check backend/server.mjs"
+    "test": "node --check backend/server.mjs",
+    "train:demo-model": "node ml/train_synthetic_demo_model.mjs"
   },
   "keywords": [
     "water-quality",

@@ -161,17 +161,12 @@
       transition: opacity 0.2s;
     }
     .nav-brand:hover { opacity: 0.9; }
-    .apple-logo {
-      width: 15px;
-      height: 18px;
-      fill: #ffffff;
-      opacity: 0.95;
-    }
     .brand-drop {
       display: inline-block;
-      font-size: 15px;
-      line-height: 1;
-      transform: translateZ(0);
+      width: 17px;
+      height: 21px;
+      color: var(--apple-blue);
+      flex: none;
     }
     @keyframes liquidDropPulse {
       0%, 100% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 6px rgba(90, 200, 250, 0.7)); }
@@ -1299,6 +1294,16 @@
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 59, 48, 0.25);
     }
+    .demo-model-results { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:18px; }
+    .demo-result-card { padding:16px; border-radius:15px; border:1px solid var(--glass-border); background:var(--glass-surface); animation:fadeInUp .35s ease both; }
+    .demo-result-card h4 { margin:0 0 8px; font-size:14px; }
+    .demo-result-card strong { font-size:25px; letter-spacing:-.04em; }
+    .demo-result-card p { margin:8px 0; color:var(--apple-gray); font-size:12px; }
+    .demo-result-card ul { margin:8px 0 0; padding-left:18px; color:var(--apple-gray); font-size:11px; }
+    .demo-result-level { display:inline-block; margin-left:8px; border-radius:99px; padding:4px 8px; background:var(--apple-blue-soft); color:var(--apple-blue); font-size:10px; font-weight:700; }
+    .demo-result-level.high { background:rgba(255,59,48,.12); color:var(--apple-red); }
+    .demo-result-level.moderate { background:rgba(255,159,10,.14); color:#996000; }
+    .demo-model-disclaimer { margin:12px 2px 0; color:var(--apple-gray); font-size:11px; }
 
     /* ===== FIELD VERIFICATION ADVISORY NOTE ===== */
     .verification-note {
@@ -1646,11 +1651,8 @@
 <nav class="global-nav" role="navigation" aria-label="Main navigation">
   <div class="global-nav-inner">
     <a href="#" class="nav-brand" aria-label="NeerWatch home">
-      <svg class="apple-logo" viewBox="0 0 170 170" aria-hidden="true">
-        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.59-7.71-11.68-14.01-6.73-10.37-12.06-22.37-15.99-36.01-3.92-13.64-5.89-26.68-5.89-39.12 0-14.56 3.75-26.79 11.24-36.68 7.49-9.89 17.06-14.93 28.71-15.14 4.57 0 9.77 1.25 15.61 3.76 5.84 2.5 9.77 3.82 11.78 3.94 1.79-.12 5.89-1.5 12.3-4.14 6.42-2.63 11.96-3.83 16.63-3.6 12.83.66 23.11 5.3 30.84 13.94-11.19 6.75-16.69 16.03-16.5 27.84.18 9.38 3.84 17.26 10.99 23.63 7.15 6.37 15.61 9.94 25.37 10.72-2.39 7.4-5.46 14.65-9.21 21.75zM119.22 31.81c0-7.39 2.66-14.28 7.97-20.67 5.32-6.39 12-10.42 20.06-12.09.22 1.34.33 2.57.33 3.69 0 7.39-2.73 14.39-8.19 21.01-5.45 6.62-12.23 10.43-20.34 11.44-.11-1.12-.17-2.12-.17-3.38z"/>
-      </svg>
       <span>NeerWatch</span>
-      <span class="brand-drop">💧</span>
+      <svg class="brand-drop" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.6C9.1 5.5 5 9.7 5 14a7 7 0 1 0 14 0c0-4.3-4.1-8.5-7-12.4Z"/></svg>
     </a>
     <div class="nav-links" id="navLinks">
       <button class="active" onclick="showView('overview')">Overview</button>
@@ -1659,7 +1661,7 @@
       <button onclick="scrollToSection('site-table')">Water Sites</button>
       <button onclick="scrollToSection('disease-trends')">Disease Trends</button>
       <button onclick="scrollToSection('coverage')">Coverage</button>
-      <button onclick="scrollToSection('dataset-workflow')">Dataset Pipeline</button>
+      <button onclick="window.location.href='/synthetic-demo'">Synthetic Demo</button>
     </div>
     <div class="nav-right">
       <div class="connection-pill loading" id="connectionTag">
@@ -1692,6 +1694,7 @@
   <div class="hero-actions">
     <button class="hero-btn-primary" onclick="scrollToSection('map')">Explore Evidence Map ›</button>
     <button class="hero-btn-secondary" onclick="showView('ml-zones')">Inspect 200 ML Zones ›</button>
+    <a class="hero-btn-secondary" href="/synthetic-demo">Run Synthetic Demo ›</a>
   </div>
   <div class="hero-stats">
     <div class="hero-stat">
@@ -1866,50 +1869,6 @@
       </div>
       <div class="coverage-list" id="coverageList"></div>
     </article>
-  </section>
-
-  <!-- DATASET ANALYSIS WORKFLOW PANEL -->
-  <section class="dataset-panel apple-card" id="dataset-workflow">
-    <div class="dataset-panel-inner">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
-        <div>
-          <h2>Dataset Analysis Pipeline</h2>
-          <p class="card-head-sub">Upload, validate, and run prototype ML inference on new water quality observations</p>
-        </div>
-        <div class="dataset-status" id="datasetStatus">Status: Waiting for upload</div>
-      </div>
-      <div class="dataset-errors" id="datasetErrors"></div>
-      
-      <div class="dataset-steps-grid">
-        <div class="dataset-step-card">
-          <div>
-            <div class="step-num">1</div>
-            <h3>Upload Dataset</h3>
-            <p>Provide a tabular CSV containing monitored Northeast water parameters, locations, and sample dates.</p>
-          </div>
-          <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="uploadCsv(this.files[0])">
-          <button class="dataset-btn" onclick="document.getElementById('csvFileInput').click()">Choose CSV File</button>
-        </div>
-
-        <div class="dataset-step-card">
-          <div>
-            <div class="step-num">2</div>
-            <h3>Validate Schema</h3>
-            <p>Verifies required fields (location_id, state, date) and validates data integrity for downstream models.</p>
-          </div>
-          <button class="dataset-btn" id="validateBtn" disabled onclick="validateCsv()">Validate Dataset</button>
-        </div>
-
-        <div class="dataset-step-card">
-          <div>
-            <div class="step-num">3</div>
-            <h3>Run ML Analysis</h3>
-            <p>Executes XGBoost inference pipeline to update contamination risk, reliability, and priority scores.</p>
-          </div>
-          <button class="dataset-btn" id="analyzeBtn" disabled onclick="analyzeCsv()">Run Prototype Analysis</button>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- FIELD VERIFICATION ADVISORY NOTE -->
@@ -2734,74 +2693,6 @@ async function requestRetest() {
   openVerificationModal();
 }
 
-/* ========== DATASET PIPELINE WORKFLOW ========== */
-async function uploadCsv(file) {
-  if (!file) return;
-  const st = document.getElementById('datasetStatus');
-  const err = document.getElementById('datasetErrors');
-  st.textContent = 'Status: Uploading CSV dataset...';
-  err.style.display = 'none';
-  try {
-    const text = await file.text();
-    const res = await fetch(API_BASE + '/dataset/upload', { method: 'POST', body: text });
-    if (!res.ok) throw new Error('Upload failed');
-    st.textContent = 'Status: UPLOAD_RECEIVED — Ready for validation';
-    document.getElementById('validateBtn').disabled = false;
-    showToast('Dataset received by backend.');
-  } catch (e) {
-    st.textContent = 'Status: ERROR';
-    err.textContent = e.message;
-    err.style.display = 'block';
-  }
-}
-
-async function validateCsv() {
-  const st = document.getElementById('datasetStatus');
-  const err = document.getElementById('datasetErrors');
-  st.textContent = 'Status: Validating schema & columns...';
-  err.style.display = 'none';
-  try {
-    const res = await fetch(API_BASE + '/dataset/validate', { method: 'POST' });
-    const data = await res.json();
-    if (!res.ok) {
-      st.textContent = 'Status: VALIDATION_FAILED';
-      err.innerHTML = data.errors ? data.errors.join('<br>') : 'Validation error';
-      err.style.display = 'block';
-      return;
-    }
-    st.textContent = `Status: READY_FOR_ANALYSIS (${data.rows_detected} rows validated)`;
-    document.getElementById('analyzeBtn').disabled = false;
-    showToast(`Validation successful: ${data.rows_detected} rows.`);
-  } catch (e) {
-    st.textContent = 'Status: ERROR';
-    err.textContent = e.message;
-    err.style.display = 'block';
-  }
-}
-
-async function analyzeCsv() {
-  const st = document.getElementById('datasetStatus');
-  const err = document.getElementById('datasetErrors');
-  st.textContent = 'Status: ML inference running...';
-  err.style.display = 'none';
-  document.getElementById('analyzeBtn').disabled = true;
-  try {
-    const res = await fetch(API_BASE + '/dataset/analyze', { method: 'POST' });
-    if (!res.ok) throw new Error('Analysis trigger failed');
-    setTimeout(async () => {
-      st.textContent = 'Status: Analysis complete — Model outputs updated';
-      await loadFromApi();
-      if (selectedId) { selectPlace(selectedId, false); }
-      showToast('ML prototype analysis completed!');
-    }, 3000);
-  } catch (e) {
-    st.textContent = 'Status: ERROR';
-    err.textContent = e.message;
-    err.style.display = 'block';
-    document.getElementById('analyzeBtn').disabled = false;
-  }
-}
-
 /* ========== INITIALIZE DASHBOARD ========== */
 async function initializeDashboard() {
   try {
@@ -2824,3 +2715,4 @@ initializeDashboard();
 </script>
 </body>
 </html>
+

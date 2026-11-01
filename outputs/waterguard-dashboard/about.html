@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About NeerWatch: how published water evidence, prototype machine learning outputs, and field verification fit together.">
+  <meta name="theme-color" content="#f4f6f7">
+  <title>About NeerWatch · Project overview</title>
+  <style>
+    :root{color-scheme:light;--bg:#f4f6f7;--surface:#fff;--ink:#18252c;--muted:#667780;--line:#e1e7e9;--accent:#087f78;--accent-soft:#e7f3f1;--notice:#f1f5f5;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,"Helvetica Neue",Arial,sans-serif}
+    :root[data-theme="dark"]{color-scheme:dark;--bg:#11191d;--surface:#192328;--ink:#eff4f5;--muted:#a2b0b5;--line:#344147;--accent:#62c9bb;--accent-soft:#203a38;--notice:#202b30}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:5;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1160px)/2));border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--surface) 84%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .brand{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;letter-spacing:-.035em}.brand span{color:var(--accent)}.drop-logo{width:16px;height:20px;flex:none;color:var(--accent)}nav{display:flex;align-items:center;gap:20px;color:var(--muted);font-size:12px}nav a:hover{color:var(--ink)}.theme{padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);cursor:pointer;font:inherit;font-size:11px}
+    main{max-width:1120px;margin:0 auto;padding:58px 24px 76px}.eyebrow{color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.hero{max-width:770px}.hero h1{margin:12px 0 15px;font-size:clamp(38px,6vw,63px);line-height:1.03;letter-spacing:-.06em;font-weight:650}.hero p{max-width:680px;margin:0;color:var(--muted);font-size:16px;line-height:1.7}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:790px;margin:34px 0 56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.stat{padding:17px 18px 17px 0}.stat+.stat{padding-left:20px;border-left:1px solid var(--line)}.stat strong{display:block;font-size:24px;font-weight:650;letter-spacing:-.04em}.stat span{color:var(--muted);font-size:9px;font-weight:650;letter-spacing:.07em;text-transform:uppercase}
+    section{margin-top:48px}.section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}.section-head small{color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.08em}.section-head h2{margin:0;font-size:21px;letter-spacing:-.04em;font-weight:650}.intro{max-width:720px;margin:0;color:var(--muted);font-size:13px;line-height:1.75}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{padding:19px;border:1px solid var(--line);border-radius:11px;background:var(--surface)}.card .num{color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.08em}.card h3{margin:11px 0 6px;font-size:14px;letter-spacing:-.025em}.card p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+    .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.panel{padding:22px;border:1px solid var(--line);border-radius:11px;background:var(--surface)}.panel h3{margin:0 0 9px;font-size:15px;letter-spacing:-.025em}.panel p,.panel li{color:var(--muted);font-size:12px;line-height:1.75}.panel p{margin:0}.panel ul{padding-left:18px;margin:10px 0 0}.callout{margin-top:16px;padding:13px 15px;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;background:var(--notice);color:var(--muted);font-size:11px;line-height:1.7}.callout strong{color:var(--ink)}
+    .demo{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;counter-reset:demo}.demo-step{padding:15px;border:1px solid var(--line);border-radius:10px;background:var(--surface);counter-increment:demo}.demo-step:before{content:"0" counter(demo);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.1em}.demo-step b{display:block;margin:7px 0 4px;font-size:12px}.demo-step span{display:block;color:var(--muted);font-size:10px;line-height:1.6}
+    .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.action{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:var(--surface);font-size:11px;font-weight:650;transition:background .15s,border-color .15s}.action:hover{border-color:var(--accent);background:var(--accent-soft)}.action.primary{border-color:var(--accent);background:var(--accent);color:#fff}.action.primary:hover{background:#066f69}
+    footer{max-width:1120px;margin:auto;padding:17px 24px 30px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}
+    @media(max-width:760px){.top{padding:0 16px}nav{gap:11px}nav a:nth-child(2){display:none}main{padding:42px 17px 56px}.stats{margin:28px 0 42px}.grid,.two-col,.demo{grid-template-columns:1fr}.card{padding:16px}.section-head{align-items:flex-start;flex-direction:column;gap:4px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.action{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="top"><a class="brand" href="/"><svg class="drop-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.6C9.1 5.5 5 9.7 5 14a7 7 0 1 0 14 0c0-4.3-4.1-8.5-7-12.4Z"/></svg>Neer<span>Watch</span></a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/model-studio">ML Model Studio</a><a href="/synthetic-demo">Synthetic Demo</a><a href="/about" aria-current="page">About</a><button class="theme" id="themeToggle" type="button">Dark theme</button></nav></header>
+  <main>
+    <div class="hero"><div class="eyebrow">Project overview · Northeast India</div><h1>From water evidence<br>to field verification.</h1><p>NeerWatch brings published water observations and prototype risk estimates into one place, helping regional teams see what is known, where to look next, and when a fresh field test is needed.</p></div>
+    <div class="stats" aria-label="Project coverage"><div class="stat"><strong>8</strong><span>Northeast states</span></div><div class="stat"><strong>44</strong><span>Historical evidence sites</span></div><div class="stat"><strong>200</strong><span>Synthetic ML zones</span></div></div>
+
+    <section><div class="section-head"><small>01 · THE CHALLENGE</small><h2>Water information is hard to act on.</h2></div><p class="intro">Public monitoring reports contain valuable local measurements, but they are spread across studies, locations, and sample dates. NeerWatch organizes that evidence geographically and pairs it with clearly labeled prototype assessments so users can prioritize follow-up work.</p></section>
+
+    <section><div class="section-head"><small>02 · HOW IT WORKS</small><h2>One workflow, three kinds of evidence.</h2></div><div class="grid">
+      <article class="card"><div class="num">01 / EVIDENCE</div><h3>Explore published observations</h3><p>Browse mapped locations, source periods, recorded water parameters, and cited references. Measurements stay tied to their historical samples.</p></article>
+      <article class="card"><div class="num">02 / PROTOTYPE MODEL</div><h3>Inspect risk and explanation</h3><p>Model Studio displays saved zone predictions, verification-priority scores, data-reliability scores, and SHAP contributors for an assessment zone.</p></article>
+      <article class="card"><div class="num">03 / VERIFICATION</div><h3>Plan a current field check</h3><p>Select a site, record a visit, and enter readings taken with a field kit. Present-day decisions still require current field and laboratory testing.</p></article>
+    </div></section>
+
+    <section><div class="section-head"><small>03 · THE MODEL</small><h2>What the model output means.</h2></div><div class="two-col">
+      <article class="panel"><h3>Signals and explanation</h3><p>The prototype schema represents water-quality measures, rainfall, historical case counts, source consistency, and sensor reliability. Saved prediction and SHAP records let a reviewer inspect a zone’s estimate and see which listed features pushed it higher or lower.</p><div class="callout"><strong>Current build:</strong> XGBoost weights and live sensor connections are not included. Home → Bring your data runs a separate logistic-regression demo trained on generated synthetic labels. Its inference outputs are for demonstrating a model pipeline only; they are not validated water-safety predictions. “Data reliability” describes input quality; it is not model accuracy.</div></article>
+      <article class="panel"><h3>Designed for transparent review</h3><ul><li>Historical published samples are shown separately from synthetic model zones.</li><li>SHAP bars describe saved model contributions; they do not establish cause.</li><li>The CSV demo scores each row using a separately trained synthetic logistic-regression model.</li><li>No output is a current water-safety certificate.</li></ul></article>
+    </div></section>
+
+    <section><div class="section-head"><small>04 · PROJECT WALKTHROUGH</small><h2>A short path through the app.</h2></div><div class="demo"><div class="demo-step"><b>Start on Home</b><span>See the coverage and open the evidence workspace.</span></div><div class="demo-step"><b>Choose a water site</b><span>Review a source, sample period, and historical readings.</span></div><div class="demo-step"><b>Open Model Studio</b><span>Choose an ML zone, inspect the saved estimate and SHAP explanation, then run the snapshot check.</span></div><div class="demo-step"><b>Open Synthetic Demo</b><span>Upload a sample CSV, validate it, and run the separate synthetic logistic-regression demo.</span></div></div><div class="actions"><a class="action primary" href="/">Open Home <span aria-hidden="true">↗</span></a><a class="action" href="/model-studio">Open ML Model Studio <span aria-hidden="true">↗</span></a><a class="action" href="/synthetic-demo">Open Synthetic Demo <span aria-hidden="true">↗</span></a></div></section>
+
+    <section><div class="section-head"><small>05 · RESPONSIBLE USE</small><h2>Decision support, with limits made visible.</h2></div><p class="intro">NeerWatch is a demonstration platform. Historical observations describe past conditions at their sampled sites; the ML snapshot is synthetic and dated. Neither replaces a calibrated field visit, laboratory analysis, or public-health guidance.</p></section>
+  </main>
+  <footer>NeerWatch · Project overview · Historical evidence and synthetic model outputs are labeled separately.</footer>
+  <script>
+    const root=document.documentElement,button=document.getElementById('themeToggle');
+    let theme='';try{theme=localStorage.getItem('neerwatch-theme')||''}catch{}
+    function setTheme(value,save=true){root.dataset.theme=value;button.textContent=value==='dark'?'Light theme':'Dark theme';document.querySelector('meta[name="theme-color"]').content=value==='dark'?'#11191d':'#f4f6f7';if(save)try{localStorage.setItem('neerwatch-theme',value)}catch{}}
+    setTheme(theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),false);button.addEventListener('click',()=>setTheme(root.dataset.theme==='dark'?'light':'dark'));
+  </script>
+</body>
+</html>
